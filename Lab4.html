@@ -186,5 +186,40 @@
         mostrarCarrito();
 
     </script>
+
+     <h2>Preguntas y Respuestas</h2>
+
+     <h3>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h3>
+     <p><strong>Diferencias:</strong> Java es un lenguaje de programación orientado a objetos, independiente de la plataforma, y se utiliza para crear aplicaciones de escritorio, móviles y web. JavaScript es un lenguaje de programación que se ejecuta principalmente en el navegador web, utilizado para crear interactividad en las páginas web. Mientras que Java es compilado, JavaScript es interpretado.</p>
+     <p><strong>Semejanzas:</strong> Ambos lenguajes comparten una sintaxis similar y se utilizan en desarrollo web, aunque en diferentes contextos.</p>
+ 
+     <h3>¿Qué métodos tiene el objeto Date? (Menciona al menos 5)</h3>
+     <ul>
+         <li><strong>getFullYear():</strong> Devuelve el año de la fecha especificada según la hora local.</li>
+         <li><strong>getMonth():</strong> Devuelve el mes de la fecha especificada según la hora local (de 0 a 11).</li>
+         <li><strong>getDate():</strong> Devuelve el día del mes de la fecha especificada según la hora local.</li>
+         <li><strong>getDay():</strong> Devuelve el día de la semana de la fecha especificada según la hora local (0 es domingo, 6 es sábado).</li>
+         <li><strong>getHours():</strong> Devuelve la hora de la fecha especificada según la hora local.</li>
+     </ul>
+ 
+     <h3>¿Qué métodos tienen los arreglos? (Menciona al menos 5)</h3>
+     <ul>
+         <li><strong>push():</strong> Añade uno o más elementos al final de un arreglo y devuelve la nueva longitud del arreglo.</li>
+         <li><strong>pop():</strong> Elimina el último elemento de un arreglo y lo devuelve.</li>
+         <li><strong>shift():</strong> Elimina el primer elemento de un arreglo y lo devuelve, desplazando todos los elementos restantes.</li>
+         <li><strong>unshift():</strong> Añade uno o más elementos al inicio de un arreglo y devuelve la nueva longitud del arreglo.</li>
+         <li><strong>slice():</strong> Devuelve una copia superficial de una porción de un arreglo en un nuevo arreglo, comenzando por el inicio hasta el fin (sin incluir el fin).</li>
+     </ul>
+ 
+     <h3>¿Cómo se declara una variable con alcance local dentro de una función?</h3>
+     <p>Una variable con alcance local dentro de una función se declara utilizando las palabras clave <code>var</code>, <code>let</code> o <code>const</code> dentro de la función. Ejemplo:</p>
+     <pre><code>function miFuncion() {
+     let variableLocal = "Hola Mundo";
+     console.log(variableLocal); // "Hola Mundo"
+ }</code></pre>
+ 
+     <h3>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h3>
+     <p>Utilizar variables globales dentro de funciones puede llevar a errores difíciles de detectar, ya que cualquier función puede modificar accidentalmente el valor de una variable global, lo que podría alterar el comportamiento del programa. Además, el uso excesivo de variables globales puede llevar a una mayor dificultad en la depuración y mantenimiento del código, así como a problemas de rendimiento, ya que las variables globales permanecen en memoria durante la vida del programa.</p> 
+        
 </body>
 </html>
