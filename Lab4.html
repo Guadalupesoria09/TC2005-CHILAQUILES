@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de JavaScript</title>
+</head>
+<body>
+    <h1>Resultados</h1>
+
+    <script>
+        // Problema 1: Tabla con números, cuadrados y cubos
+        function generarTabla() {
+            var numero = prompt("Ingresa un número:");
+
+            document.write("<h2>Tabla de Números, Cuadrados y Cubos</h2>");
+            document.write("<table border='1'>");
+            document.write("<tr><th>Número</th><th>Cuadrado (n^2)</th><th>Cubo (n^3)</th></tr>");
+
+            for (var i = 1; i <= numero; i++) {
+                var cuadrado = i * i;
+                var cubo = i * i * i;
+
+                document.write("<tr><td>" + i + "</td><td>" + cuadrado + "</td><td>" + cubo + "</td></tr>");
+            }
+            document.write("</table><br>");
+        }
+
+        generarTabla();
+
+
+        // Problema 2: Verificación de suma aleatoria
+        function generarNumerosAleatorios() {
+            return Math.floor(Math.random() * 10); // Número aleatorio de 0 a 9
+        }
+
+        function verificarRespuesta() {
+            var num1 = generarNumerosAleatorios();
+            var num2 = generarNumerosAleatorios();
+
+            var sumaCorrecta = num1 + num2;
+
+            var tiempoI = new Date(); 
+            var respuestaUsuario = prompt("¿Cuál es la suma de " + num1 + " más " + num2 + "?");
+            var tiempoF = new Date(); 
+            var tiempoTranscurrido = (tiempoF - tiempoI) / 1000; 
+
+            var respuestaCorrecta = parseInt(respuestaUsuario) === sumaCorrecta;
+
+            document.write("<h2>Verificación de Suma Aleatoria</h2>");
+            if (respuestaCorrecta) {
+                document.write("¡Respuesta correcta! <br>");
+            } else {
+                document.write("Respuesta incorrecta. La respuesta correcta es: " + sumaCorrecta + "<br>");
+            }
+
+            document.write("Tiempo transcurrido: " + tiempoTranscurrido + " segundos<br><br>");
+        }
+
+        verificarRespuesta();
+
+
+        // Problema 3: Función contador
+        function contador(arreglo) {
+            var negativos = 0;
+            var ceros = 0;
+            var positivos = 0;
+
+            for (var i = 0; i < arreglo.length; i++) {
+                if (arreglo[i] < 0) {
+                    negativos++;
+                } else if (arreglo[i] === 0) {
+                    ceros++;
+                } else {
+                    positivos++;
+                }    
+            }  
+
+            return {
+                negativos: negativos,
+                ceros: ceros,
+                positivos: positivos
+            };
+        }
+
+        document.write("<h2>Contador de Números</h2>");
+        var resultado1 = contador([4, -8, 0, 1, 0, -2]);
+        var resultado2 = contador([-1, 0, 0, -7, 9, 0]);
+
+        document.write("Arreglo 1: [4, -8, 0, 1, 0, -2]<br>");
+        document.write("Negativos: " + resultado1.negativos + ", Ceros: " + resultado1.ceros + ", Positivos: " + resultado1.positivos + "<br>");
+
+        document.write("Arreglo 2: [-1, 0, 0, -7, 9, 0]<br>");
+        document.write("Negativos: " + resultado2.negativos + ", Ceros: " + resultado2.ceros + ", Positivos: " + resultado2.positivos + "<br><br>");
+
+
+        // Problema 4: Función promedios
+        function promedios (matriz) {
+            var promedios = [];
+        
+            for (var i = 0; i < matriz.length; i++) {
+                var suma = 0;
+
+                for (var j = 0; j < matriz[i].length; j++) {
+                    suma += matriz[i][j];
+                }
+
+                var promedio = suma / matriz[i].length;
+                promedios.push(promedio);
+            }
+
+            return promedios;
+        }
+
+        document.write("<h2>Promedios de Matriz</h2>");
+        var matriz = [
+            [7, 5, 9],
+            [8, 8, 6],
+            [7, 8, 9]
+        ];
+
+        var promediosResultado = promedios(matriz);
+        document.write("Matriz: [ [7, 5, 9], [8, 8, 6], [7, 8, 9] ]<br>");
+        document.write("Promedios: [" + promediosResultado.join(", ") + "]<br><br>");
+
+
+        // Problema 5: Función inverso
+        function inverso(numero) {
+            const invertido = parseFloat(numero.toString().split('').reverse().join(''));
+            return invertido;
+        }
+
+        function probarInverso() {
+            var numero = prompt("Ingresa un número para invertir:");
+            var resultado = inverso(numero);
+
+            document.write("<h2>Inversión de Número</h2>");
+            document.write("Número original: " + numero + "<br>");
+            document.write("Número invertido: " + resultado + "<br>");
+        }
+
+        probarInverso();
+
+
+          // Problema 6: Carrito de Compras
+          function Producto(nombre, precio, cantidad) {
+            this.nombre = nombre;
+            this.precio = precio;
+            this.cantidad = cantidad;
+
+            // Método para calcular el total por producto
+            this.calcularTotal = function() {
+                return this.precio * this.cantidad;
+            };
+
+            // Método para aplicar un descuento
+            this.aplicarDescuento = function(descuento) {
+                if (descuento > 0 && descuento <= 100) {
+                    return this.calcularTotal() * ((100 - descuento) / 100);
+                } else {
+                    return this.calcularTotal();
+                }
+            };
+        }
+
+        function mostrarCarrito() {
+            let productos = [
+                new Producto("Manzanas", 3, 5),
+                new Producto("Pan", 2, 3),
+                new Producto("Leche", 1.5, 2)
+            ];
+
+            let descuento = 10; // 10% de descuento
+
+            document.write("<h2>Carrito de Compras</h2>");
+            for (let i = 0; i < productos.length; i++) {
+                let producto = productos[i];
+                document.write("Producto: " + producto.nombre + "<br>");
+                document.write("Precio por unidad: $" + producto.precio.toFixed(2) + "<br>");
+                document.write("Cantidad: " + producto.cantidad + "<br>");
+                document.write("Total sin descuento: $" + producto.calcularTotal().toFixed(2) + "<br>");
+                document.write("Total con descuento: $" + producto.aplicarDescuento(descuento).toFixed(2) + "<br><br>");
+            }
+        }
+
+        mostrarCarrito();
+
+    </script>
+</body>
+</html>
