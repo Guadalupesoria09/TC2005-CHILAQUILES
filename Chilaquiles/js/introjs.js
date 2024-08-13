@@ -102,15 +102,3 @@ const chilaquil = {
 }
 
 console.log(chilaquil);
-
-
-
-
-
-
-
-
-
-
-
-// modificar html
