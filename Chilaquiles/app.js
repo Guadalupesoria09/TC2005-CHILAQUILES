@@ -99,7 +99,7 @@ const server = http.createServer( (request, response) => {
                             </tr>
                         </thead>
                     </table>
-                    <button class="button is-warning" id="boton_chilaquiles">Preparar orden</button>
+                    <a href="/preparar" class="button is-warning" id="boton_chilaquiles">Preparar orden</a>
                     <button style="display:none" class="button is-success" id="boton_salsa_verde">Poner salsa verde</button>
                     <button style="display:none" class="button is-warning" id="boton_suerte">Voy a tener suerte</button>
                     <button style="display:none" class="button is-danger" id="boton_salsa_roja">Poner salsa roja</button>
