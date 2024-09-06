@@ -25,18 +25,22 @@ const http = require('http');
 const server = http.createServer( (request, response) => {    
     console.log(request.url);
     response.setHeader('Content-Type', 'text/html');
-    response.write(`
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Chilaquiles</title>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-        </head>
-        <body>
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
+    if (request.url == "/preparar") {
+
+    } else {
+        response.write(`
+
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Chilaquiles</title>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+            </head>
+            <body>
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
                         <img src="https://tse2.mm.bing.net/th?id=OIP.fPCPUSDS8XuKkKOnQBU2BgHaFj&pid=Api&P=0&h=70"> 
           
                     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -67,7 +71,7 @@ const server = http.createServer( (request, response) => {
                 </div>
               </div>
           </nav>
-        <section class="section">
+          <section class="section">
             <div class="container">
                 <header>
                     <h1 class="title">Chilaquiles</h1>
@@ -105,6 +109,8 @@ const server = http.createServer( (request, response) => {
                     <button style="display:none" class="button is-danger" id="boton_salsa_roja">Poner salsa roja</button>
                     <br><br>
                     <img width="40%" id="imagen_chilaquiles" src="" alt="" />
+                    <p>Anímate a probar suerte con los chilaquiles de la casa</p>
+                    <br><br>
                 </main>
                 <footer class="footer">
                     <div class="content has-text-centered">
@@ -125,6 +131,8 @@ const server = http.createServer( (request, response) => {
     </body>
     </html>
     `);
+
+}
     
     response.end();
 });
