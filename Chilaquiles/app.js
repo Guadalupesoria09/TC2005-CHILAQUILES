@@ -79,7 +79,7 @@ const prepararRutas = require('./routes/preparar.routes');
 
 app.use('/preparar', prepararRutas);
 
-app.use((request, response, next) => {
+app.get('/', (request, response, next) => {
     console.log('Otro middleware!');
     response.send(`
         ${html_header}
@@ -125,5 +125,21 @@ app.use((request, response, next) => {
             ${html_footer}
     `); 
 });
+
+app.use((request, response, next) => {
+    response.statusCode = 404;
+    response.send(`
+            ${html_header}
+            <header>
+                <h1 class="title">404 No hay chilaquiles</h1>
+            </header>
+            <main>
+                <br>
+                <p class="block">
+                    Lo sentimos, los <span>chilaquiles</span> que estás buscando no existen en nuestro menú. 
+                </p>
+            ${html_footer}
+        `);
+})
 
 app.listen(3000);
