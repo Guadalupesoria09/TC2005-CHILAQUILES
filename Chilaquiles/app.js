@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 
-
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
+
+const path = require('path');
 
 const html_header = `
     
@@ -33,6 +34,9 @@ const html_header = `
                     <div class="navbar-start"> 
                         <a href="/" class="navbar-item">
                         Inicio
+                        </a>
+                        <a href="/about" class="navbar-item">
+                        About
                         </a>
                   </div>
                   <div class="navbar-end">
@@ -78,6 +82,10 @@ const html_footer = `
 const prepararRutas = require('./routes/preparar.routes');
 
 app.use('/preparar', prepararRutas);
+
+app.use('/about', (request, response, next) => {
+    response.sendFile(path.join(__dirname, 'old_labs', 'about.html'));
+});
 
 app.get('/', (request, response, next) => {
     console.log('Otro middleware!');

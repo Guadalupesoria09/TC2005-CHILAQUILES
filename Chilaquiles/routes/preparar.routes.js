@@ -48,6 +48,9 @@ const html_header = `
                         <a href="/" class="navbar-item">
                         Inicio
                         </a>
+                        <a href="/about" class="navbar-item">
+                        About
+                        </a>
                   </div>
                   <div class="navbar-end">
                     <div class="navbar-item">
