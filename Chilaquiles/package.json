@@ -24,5 +24,8 @@
   "homepage": "https://github.com/Guadalupesoria09/TC2005-CHILAQUILES#readme",
   "devDependencies": {
     "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
   }
 }
