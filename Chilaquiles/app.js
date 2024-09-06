@@ -5,25 +5,6 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
-const chilaquiles = [
-    {
-        descripcion: "Chilaquiles en salsa verde", 
-        imagen: "https://cdn7.kiwilimon.com/recetaimagen/1626/3018.jpg",
-    },
-    {
-        descripcion: "Chilaquiles en salsa roja", 
-        imagen: "https://tse1.mm.bing.net/th?id=OIP.zJcG6SrXwgYRermppNlwJAHaFA&pid=Api&P=0&h=180",
-    },
-    {
-        descripcion: "Chilaquiles con salsa roja y verde", 
-        imagen: "https://cdn2.actitudfem.com/media/files/styles/big_img/public/images/2013/09/chilaquiles1.jpg",
-    },
-    {
-        descripcion: "Chilaquiles con mole", 
-        imagen: "https://cdn7.kiwilimon.com/recetaimagen/14501/960x640/6890.jpg.jpg",
-    },
-];
-
 const html_header = `
     
 
@@ -94,61 +75,9 @@ const html_footer = `
 `;
 
 //Middleware
-app.post('/preparar', (request, response, next) => {
-    console.log(request.body);
-    let tipo_chilaquiles = 0;
-    if (request.body.salsa == "roja") {
-        tipo_chilaquiles = 1;
-    } else if (request.body.salsa == "roja y verde") {
-        tipo_chilaquiles = 2;
-    } else if (request.body.salsa == "mole"){
-        tipo_chilaquiles = 3;
-    }
-    response.send(`
-        ${html_header}
-        <img alt="${chilaquiles[tipo_chilaquiles].descripcion}" src="${chilaquiles[tipo_chilaquiles].imagen}">
-        ${html_footer}
-    `);
+const prepararRutas = require('./routes/preparar.routes');
 
-});
-
-app.get('/preparar', (request, response, next) => {
-    console.log('Ruta /preparar');
-    response.send(`
-        ${html_header}
-        <header>
-            <h1 class="title">Preparar chilaquiles</h1>
-        </header>
-        <main>
-            <br><br>
-            <form action="/preparar" method="POST">
-                <div class="field">
-                    <label class="label" for="nombre">Nombre</label>
-                    <div class="control">
-                        <input id="nombre" name="nombre" class="input" type="text" placeholder="Nombre completo" required>
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="salsa" class="label">Salsa</label>
-                    <div class="control">
-                        <div class="select">
-                            <select id="salsa" name="salsa">
-                                <option value="verde">Verde</option>
-                                <option value="roja">Roja</option>
-                                <option value="roja y verde">Roja y verde</option>
-                                <option value="mole">Mole</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="control">
-                    <input type="submit" class="button is-link" value="Preparar">
-                </div>
-                
-            </form>
-        ${html_footer}
-    `); 
-});
+app.use('/preparar', prepararRutas);
 
 app.use((request, response, next) => {
     console.log('Otro middleware!');
