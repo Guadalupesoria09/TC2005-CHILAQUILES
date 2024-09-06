@@ -19,6 +19,26 @@ setTimeout(() => {
 }, 12000);
 
 
+const chilaquiles = [
+    {
+        descripcion: "Chilaquiles en salsa verde", 
+        imagen: "https://cdn7.kiwilimon.com/recetaimagen/1626/3018.jpg",
+    },
+    {
+        descripcion: "Chilaquiles en salsa roja", 
+        imagen: "https://tse1.mm.bing.net/th?id=OIP.zJcG6SrXwgYRermppNlwJAHaFA&pid=Api&P=0&h=180",
+    },
+    {
+        descripcion: "Chilaquiles con salsa roja y verde", 
+        imagen: "https://cdn2.actitudfem.com/media/files/styles/big_img/public/images/2013/09/chilaquiles1.jpg",
+    },
+    {
+        descripcion: "Chilaquiles con mole", 
+        imagen: "https://cdn7.kiwilimon.com/recetaimagen/14501/960x640/6890.jpg.jpg",
+    },
+]
+
+
 //http es el módulo que contiene todas las funciones de un servidor http
 const http = require('http');
 
@@ -132,9 +152,48 @@ const server = http.createServer( (request, response) => {
                             </form>
                         ${html_footer}                       
         `);
+        response.end();
 
     } else if (request.url == "/preparar" && request.method == "POST") { 
 
+        const datos = [];
+        request.on('data', (dato) => {
+            console.log(dato);
+            datos.push(dato);
+        });
+        request.on('end', () => {
+            const datos_completos = Buffer.concat(datos).toString();
+            console.log(datos_completos);
+            const salsa = datos_completos.split('&')[1].split('=')[1];
+            console.log(`Preparando chilaquiles con salsa ${salsa}`);
+
+            if(salsa == "verde") {
+                response.write(`
+                    ${html_header}
+                    <img alt="${chilaquiles[0].descripcion}" src="${chilaquiles[0].imagen}">
+                    ${html_footer}
+                `);
+            } else if (salsa == "roja") {
+                response.write(`
+                    ${html_header}
+                    <img alt="${chilaquiles[1].descripcion}" src="${chilaquiles[1].imagen}">
+                    ${html_footer}
+                `);
+            } else if (salsa == "roja y verde") {
+                response.write(`
+                    ${html_header}
+                    <img alt="${chilaquiles[2].descripcion}" src="${chilaquiles[2].imagen}">
+                    ${html_footer}
+                `);
+            } else if (salsa == "mole"){
+                response.write(`
+                    ${html_header}
+                    <img alt="${chilaquiles[3].descripcion}" src="${chilaquiles[3].imagen}">
+                    ${html_footer}
+                `);
+            }
+            response.end();
+        });
 
     } else {
 
@@ -183,9 +242,11 @@ const server = http.createServer( (request, response) => {
                     ${html_footer}
                 
  `);
+
+ response.end();
+
 }
     
-    response.end();
 });
 
 
