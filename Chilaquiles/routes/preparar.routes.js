@@ -6,20 +6,6 @@ const preparar_controller = require('../controllers/preparar.controller');
 
 router.get('/', preparar_controller.get_preparar);
 
+router.post('/', preparar_controller.post_preparar);
 
-router.post('/', (request, response, next) => {
-    console.log(request.body);
-    let tipo_chilaquiles = 0;
-    if (request.body.salsa == "roja") {
-        tipo_chilaquiles = 1;
-    } else if (request.body.salsa == "roja y verde") {
-        tipo_chilaquiles = 2;
-    } else if (request.body.salsa == "mole"){
-        tipo_chilaquiles = 3;
-    }
-    response.render('preparado.ejs', {
-        alt: chilaquiles[tipo_chilaquiles].descripcion,
-        src: chilaquiles[tipo_chilaquiles].imagen,
-    });
-});
 module.exports = router;
