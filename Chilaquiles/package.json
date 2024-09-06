@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/Guadalupesoria09/TC2005-CHILAQUILES/issues"
   },
-  "homepage": "https://github.com/Guadalupesoria09/TC2005-CHILAQUILES#readme"
+  "homepage": "https://github.com/Guadalupesoria09/TC2005-CHILAQUILES#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
 }
