@@ -1,0 +1,25 @@
+{
+  "name": "chilaquiles",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guadalupe Soria",
+  "license": "MIT",
+  "description": "Aplicación web para vender los mejores chilaquiles",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guadalupesoria09/TC2005-CHILAQUILES.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "tc2005b"
+  ],
+  "bugs": {
+    "url": "https://github.com/Guadalupesoria09/TC2005-CHILAQUILES/issues"
+  },
+  "homepage": "https://github.com/Guadalupesoria09/TC2005-CHILAQUILES#readme"
+}
