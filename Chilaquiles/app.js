@@ -89,12 +89,11 @@ const server = http.createServer( (request, response) => {
                         </footer>
                     </div>
                 </section>
-                <script src="js/poe.js"></script>
             </body>
         </html>
     `;
 
-    if (request.url == "/preparar") {
+    if (request.url == "/preparar" && request.method == "GET") {
 
         response.write(`
                         ${html_header}
@@ -108,7 +107,7 @@ const server = http.createServer( (request, response) => {
                             <div class="field">
                                 <label class="label" for="nombre">Nombre</label>
                                 <div class="control">
-                                    <input id="nombre" name="nombre" class="input" type="text" placeholder="Lupita Soria">
+                                    <input id="nombre" name="nombre" class="input" type="text" placeholder="Nombre completo" required>
                                 </div>
                             </div>
 
@@ -133,6 +132,9 @@ const server = http.createServer( (request, response) => {
                             </form>
                         ${html_footer}                       
         `);
+
+    } else if (request.url == "/preparar" && request.method == "POST") { 
+
 
     } else {
 
