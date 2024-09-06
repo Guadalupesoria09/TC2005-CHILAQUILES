@@ -125,7 +125,7 @@ app.get('/preparar', (request, response, next) => {
                 <div class="field">
                     <label class="label" for="nombre">Nombre</label>
                     <div class="control">
-                        <input id="nombre" name="nombre" class="input" type="text" placeholder="Lalo" required>
+                        <input id="nombre" name="nombre" class="input" type="text" placeholder="Nombre completo" required>
                     </div>
                 </div>
                 <div class="field">
@@ -135,7 +135,7 @@ app.get('/preparar', (request, response, next) => {
                             <select id="salsa" name="salsa">
                                 <option value="verde">Verde</option>
                                 <option value="roja">Roja</option>
-                                <option value="chipotle">Chipotle</option>
+                                <option value="roja y verde">Roja y verde</option>
                                 <option value="mole">Mole</option>
                             </select>
                         </div>
