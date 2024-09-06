@@ -167,31 +167,25 @@ const server = http.createServer( (request, response) => {
             const salsa = datos_completos.split('&')[1].split('=')[1];
             console.log(`Preparando chilaquiles con salsa ${salsa}`);
 
-            if(salsa == "verde") {
-                response.write(`
-                    ${html_header}
-                    <img alt="${chilaquiles[0].descripcion}" src="${chilaquiles[0].imagen}">
-                    ${html_footer}
-                `);
-            } else if (salsa == "roja") {
-                response.write(`
-                    ${html_header}
-                    <img alt="${chilaquiles[1].descripcion}" src="${chilaquiles[1].imagen}">
-                    ${html_footer}
-                `);
+            let tipo_chilaquiles = 0;
+
+            if (salsa == "roja") {
+                tipo_chilaquiles = 1;
+
             } else if (salsa == "roja y verde") {
-                response.write(`
-                    ${html_header}
-                    <img alt="${chilaquiles[2].descripcion}" src="${chilaquiles[2].imagen}">
-                    ${html_footer}
-                `);
+                tipo_chilaquiles = 2;
+
             } else if (salsa == "mole"){
-                response.write(`
-                    ${html_header}
-                    <img alt="${chilaquiles[3].descripcion}" src="${chilaquiles[3].imagen}">
-                    ${html_footer}
-                `);
+                tipo_chilaquiles = 3;
+
             }
+
+            response.write(`
+                ${html_header}
+                <img alt="${chilaquiles[tipo_chilaquiles].descripcion}" src="${chilaquiles[tipo_chilaquiles].imagen}">
+                ${html_footer}
+            `);
+
             response.end();
         });
 

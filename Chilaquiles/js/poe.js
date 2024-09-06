@@ -1,6 +1,7 @@
 const boton_preparar = document.getElementById('boton_chilaquiles');
 const boton_verde = document.getElementById('boton_salsa_verde');
 const boton_rojo = document.getElementById('boton_salsa_roja');
+const boton_rojoverde = document.getElementById('boton_salsa_rojaverde');
 const boton_suerte = document.getElementById('boton_suerte');
 
 const chilaquiles = [
@@ -29,6 +30,7 @@ boton_preparar.onclick = () => {
     boton_preparar.style = "display:none";
     boton_verde.style = "display:inline";
     boton_rojo.style = "display:inline";
+    boton_rojoverde.style = "display:none";
     boton_suerte.style = "display:inline";
 }
 
@@ -38,6 +40,7 @@ boton_verde.onclick = () => {
     imagen.src = chilaquiles[0].imagen;
     boton_verde.style = "display:none";
     boton_rojo.style = "display:none";
+    boton_rojoverde.style = "display:none";
     boton_suerte.style = "display:none";
 }
 
@@ -47,8 +50,20 @@ boton_rojo.onclick = () => {
     imagen.src = chilaquiles[1].imagen;
     boton_verde.style = "display:none";
     boton_rojo.style = "display:none";
+    boton_rojoverde.style = "display:none";
     boton_suerte.style = "display:none";
 }
+
+boton_rojoverde.onclick = () => {
+    const imagen = document.getElementById('imagen_chilaquiles');
+    imagen.alt = chilaquiles[2].descripcion;
+    imagen.src = chilaquiles[2].imagen;
+    boton_verde.style = "display:none";
+    boton_rojo.style = "display:none";
+    boton_rojoverde.style = "display:none";
+    boton_suerte.style = "display:none";
+}
+
 boton_suerte.onclick = () => {
     const imagen = document.getElementById('imagen_chilaquiles');
     const num_chilaquiles = Math.floor(Math.random() * 3);
@@ -56,4 +71,5 @@ boton_suerte.onclick = () => {
     imagen.src = chilaquiles[num_chilaquiles].imagen;
     boton_verde.style = "display:none";
     boton_rojo.style = "display:none";
+    boton_rojoverde.style = "display:none";
 }
