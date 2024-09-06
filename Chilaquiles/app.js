@@ -71,7 +71,7 @@ const server = http.createServer( (request, response) => {
 
                 <div id="navbarBasicExample" class="navbar-menu">
                     <div class="navbar-start"> 
-                        <a class="navbar-item">
+                        <a href="/" class="navbar-item">
                         Inicio
                         </a>
                   </div>
@@ -189,7 +189,7 @@ const server = http.createServer( (request, response) => {
             response.end();
         });
 
-    } else {
+    } else if(request.url == "/") {
 
         response.write(`
                 
@@ -239,6 +239,24 @@ const server = http.createServer( (request, response) => {
 
  response.end();
 
+} else {
+
+    response.statusCode = 404;
+
+    response.write(`
+        ${html_header}
+        <header>
+            <h1 class="title">404 No hay chilaquiles</h1>
+        </header>
+        <main>
+            <br>
+            <p class="block">
+                Lo sentimos, los <span>chilaquiles</span> que estás buscando no los hacemos. 
+            </p>
+        ${html_footer}
+    `);
+    
+    response.end();
 }
     
 });
