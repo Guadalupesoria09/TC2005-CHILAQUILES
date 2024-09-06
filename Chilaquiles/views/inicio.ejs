@@ -1,0 +1,43 @@
+<%- include('includes/head.ejs') %>
+<header>
+    <h1 class="title">Chilaquiles</h1>
+</header>
+<main>
+    <br>
+    <p class="block">
+        <strong>¡hola mundo!</strong> 
+        Los <span>chilaquiles</span> son <em>deliciosos</em>. 
+    </p>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Con salsa verde</td>
+                <td>Con salsa de mole</td>
+            </tr>
+            <tr>
+                <td>Crema, queso y aguacate</td>
+                <td>Crema, queso y aguacate</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <td>Nuestros mejores chilaquiles</td>
+        </tfoot>
+        <thead>
+            <tr>
+                <th>Chilaquiles verdes</th>
+                <th>Chilaquiles rojos</th>
+            </tr>
+        </thead>
+    </table>
+    <a href="/preparar" class="button is-warning" id="boton_chilaquiles">Preparar orden</a>
+    <button style="display:none" class="button is-success" id="boton_salsa_verde">Poner salsa verde</button>
+    <button style="display:none" class="button is-warning" id="boton_suerte">Voy a tener suerte</button>
+    <button style="display:none" class="button is-danger" id="boton_salsa_roja">Poner salsa roja</button>
+    <button style="display:none" class="button is-danger" id="boton_salsa_rojaverde">Poner salsa roja y verde</button>
+
+    <br><br>
+    <img width="40%" id="imagen_chilaquiles" src="" alt="" />
+    <p>Anímate a probar suerte con los chilaquiles de la casa</p>
+    <br><br>
+    
+<%- include('includes/foot.ejs') %>
