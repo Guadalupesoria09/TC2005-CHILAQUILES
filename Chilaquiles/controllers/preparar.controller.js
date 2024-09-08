@@ -18,9 +18,8 @@ exports.post_preparar = (request, response, next) => {
     }
 
     chilaquiles = Chilaquiles.fetchAll();
-
-    response.setHeader('Set-Cookie', `pedido=${chilaquiles[tipo_chilaquiles].descripcion}`);
-
+    
+    response.setHeader('Set-Cookie', [`pedido=${chilaquiles[tipo_chilaquiles].descripcion}`, `imagen=${chilaquiles[tipo_chilaquiles].imagen}`]);
     response.render('preparado.ejs', {
         alt: chilaquiles[tipo_chilaquiles].descripcion,
         src: chilaquiles[tipo_chilaquiles].imagen,
