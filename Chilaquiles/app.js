@@ -11,19 +11,19 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
 //Middleware
-const prepararRutas = require('./routes/preparar.routes');
-
-app.use('/preparar', prepararRutas);
+app.use((request, response, next) => {
+    console.log('Middleware!');
+    next();
+});
 
 app.use('/about', (request, response, next) => {
     response.sendFile(path.join(__dirname, 'old_labs', 'about.html'));
 });
 
-app.get('/', (request, response, next) => {
-    console.log('Otro middleware!');
-    response.render('inicio');
-
-})
+const prepararRutas = require('./routes/preparar.routes');
+app.use('/preparar', prepararRutas);
+const chilaquilesRutas = require('./routes/chilaquiles.routes');
+app.get('/', chilaquilesRutas);
 
 app.use((request, response, next) => {
 
@@ -31,4 +31,3 @@ app.use((request, response, next) => {
     response.render('404');
 })
 
-app.listen(3000);
