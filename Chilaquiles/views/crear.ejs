@@ -1,0 +1,25 @@
+<%- include('includes/head.ejs') %>
+<header>
+    <h1 class="title">Crear chilaquiles</h1>
+</header>
+<main>
+    <br><br>
+    <form action="/crear" method="POST">
+        <div class="field">
+            <label class="label" for="nombre">Descripcion</label>
+            <div class="control">
+                <input id="descripcion" name="descripcion" class="input" type="text" placeholder="Tipo" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label" for="nombre">Imagen</label>
+            <div class="control">
+                <input id="imagen" name="imagen" class="input" type="text" placeholder="jpg" required>
+            </div>
+        </div>
+        <div class="control">
+            <input type="submit" class="button is-link" value="Crear">
+        </div>
+        
+    </form>
+<%- include('includes/foot.ejs') %>

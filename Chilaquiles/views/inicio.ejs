@@ -3,32 +3,47 @@
     <h1 class="title">Chilaquiles</h1>
 </header>
 <main>
-    <br>
-    <p class="block">
-        <strong>¡hola mundo!</strong> 
-        Los <span>chilaquiles</span> son <em>deliciosos</em>. 
-    </p>
-    <table class="table">
-        <tbody>
-            <tr>
-                <td>Con salsa verde</td>
-                <td>Con salsa de mole</td>
-            </tr>
-            <tr>
-                <td>Crema, queso y aguacate</td>
-                <td>Crema, queso y aguacate</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <td>Nuestros mejores chilaquiles</td>
-        </tfoot>
-        <thead>
-            <tr>
-                <th>Chilaquiles verdes</th>
-                <th>Chilaquiles rojos</th>
-            </tr>
-        </thead>
-    </table>
+    <br />
+    <br />
+    <a href="/crear" class="button is-link">Nuevo</a>
+    <br />
+    <br />
+    <div class="columns">
+        <% for (chilaquil of chilaquiles) { %>
+            <div class="column">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                        <img
+                            src="<%= chilaquil.imagen %>"
+                            alt="<%= chilaquil.descripcion %>"
+                        />
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img
+                                    src="<%= chilaquil.imagen %>"
+                                    alt="<%= chilaquil.descripcion %>"
+                                />
+                            </figure>
+                            </div>
+                            <div class="media-content">
+                            <p class="title is-4"><%= chilaquil.descripcion %></p>
+                            </div>
+                        </div>
+                    
+                        <div class="content">
+                            <%= chilaquil.descripcion %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
     <a href="/preparar" class="button is-warning" id="boton_chilaquiles">Preparar orden</a>
     <button style="display:none" class="button is-success" id="boton_salsa_verde">Poner salsa verde</button>
     <button style="display:none" class="button is-warning" id="boton_suerte">Voy a tener suerte</button>
@@ -36,8 +51,6 @@
     <button style="display:none" class="button is-danger" id="boton_salsa_rojaverde">Poner salsa roja y verde</button>
 
     <br><br>
-    <img width="40%" id="imagen_chilaquiles" src="" alt="" />
-    <p>Anímate a probar suerte con los chilaquiles de la casa</p>
-    <br><br>
+    <img width="60%" id="imagen_chilaquiles" src="" alt="" />
     
 <%- include('includes/foot.ejs') %>

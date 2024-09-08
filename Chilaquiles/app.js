@@ -21,9 +21,11 @@ app.use('/about', (request, response, next) => {
 });
 
 const prepararRutas = require('./routes/preparar.routes');
+
 app.use('/preparar', prepararRutas);
 const chilaquilesRutas = require('./routes/chilaquiles.routes');
-app.get('/', chilaquilesRutas);
+
+app.use('/', chilaquilesRutas);
 
 app.use((request, response, next) => {
 
@@ -31,3 +33,6 @@ app.use((request, response, next) => {
     response.render('404');
 })
 
+app.listen(3000, () => {
+    console.log('Servidor escuchando en el puerto 3000');
+});
