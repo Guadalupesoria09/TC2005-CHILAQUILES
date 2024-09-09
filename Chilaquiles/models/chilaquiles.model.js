@@ -20,4 +20,16 @@ module.exports = class Chilaquiles {
         return chilaquiles;
         return db.execute('SELECT * FROM chilaquiles');
     }
+
+    static fetchOne(id) {
+    return db.execute('SELECT * FROM chilaquiles WHERE id = ?', [id]);
+    }
+
+    static fetch(id) {
+        if (id) {
+            return this.fetchOne(id);
+        } else {
+            return this.fetchAll();
+        }
+    }
 }

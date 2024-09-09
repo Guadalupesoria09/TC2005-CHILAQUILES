@@ -3,8 +3,14 @@ const Chilaquiles = require('../models/chilaquiles.model');
 
 exports.get_preparar = (request, response, next) => {
     console.log('Ruta /preparar');
-    response.render('preparar', {
-        username: request.session.username || '',
+    Chilaquiles.fetchAll()
+    .then(([rows, fieldData])=>{
+        return response.render('preparar', {
+            username: request.session.username || '',
+            chilaquiles: rows,
+        }); 
+    }).catch((error)=>{ 
+        console.log(error); 
     }); 
 };
 

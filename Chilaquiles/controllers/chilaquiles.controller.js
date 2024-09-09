@@ -15,7 +15,7 @@ exports.get_root = (request, response, next) => {
         request.session.mensaje = '';
     }
 
-    Chilaquiles.fetchAll()
+    Chilaquiles.fetch(request.params.chilaquil_id)
         .then(([rows, fieldData]) => {
             response.render('inicio', {
                 username: request.session.username || '',

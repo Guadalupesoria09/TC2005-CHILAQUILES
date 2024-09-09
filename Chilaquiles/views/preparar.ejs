@@ -17,10 +17,9 @@
             <div class="control">
                 <div class="select">
                     <select id="salsa" name="salsa">
-                        <option value="verde">Verde</option>
-                        <option value="roja">Roja</option>
-                        <option value="roja y verde">Roja y Verde</option>
-                        <option value="mole">Mole</option>
+                        <% for(chilaquil of chilaquiles) { %> 
+                            <option value="<%= chilaquil.id %>"><%= chilaquil.descripcion %></option>
+                        <% } %>
                     </select>
                 </div>
             </div>
