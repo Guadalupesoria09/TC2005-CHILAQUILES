@@ -11,15 +11,18 @@ exports.get_root = (request, response, next) => {
     }
 
     response.render('inicio', {
+        username: request.session.username || '',
         chilaquiles: Chilaquiles.fetchAll(),
-         ultimo_pedido: ultimo_pedido,
+        ultimo_pedido: ultimo_pedido,
         imagen: imagen,
     });
 
 };
 
 exports.get_crear = (request, response, next) => {
-    response.render('crear');
+    response.render('crear', {
+        username: request.session.username || '',
+    });
 };
 
 exports.post_crear = (request, response, next) => {

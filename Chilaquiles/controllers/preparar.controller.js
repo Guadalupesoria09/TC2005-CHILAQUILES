@@ -3,7 +3,9 @@ const Chilaquiles = require('../models/chilaquiles.model');
 
 exports.get_preparar = (request, response, next) => {
     console.log('Ruta /preparar');
-    response.render('preparar'); 
+    response.render('preparar', {
+        username: request.session.username || '',
+    }); 
 };
 
 exports.post_preparar = (request, response, next) => {
@@ -21,6 +23,7 @@ exports.post_preparar = (request, response, next) => {
     
     response.setHeader('Set-Cookie', [`pedido=${chilaquiles[tipo_chilaquiles].descripcion}`, `imagen=${chilaquiles[tipo_chilaquiles].imagen}`]);
     response.render('preparado.ejs', {
+        username: request.session.username || '',
         alt: chilaquiles[tipo_chilaquiles].descripcion,
         src: chilaquiles[tipo_chilaquiles].imagen,
     });

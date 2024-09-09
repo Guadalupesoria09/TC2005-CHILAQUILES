@@ -36,6 +36,10 @@ app.use('/preparar', prepararRutas);
 const chilaquilesRutas = require('./routes/chilaquiles.routes');
 app.use('/', chilaquilesRutas);
 
+app.get('/login', (request, response, next) => {
+    response.render('login');  
+});
+
 app.use((request, response, next) => {
     response.statusCode = 404;
     response.render('404');
