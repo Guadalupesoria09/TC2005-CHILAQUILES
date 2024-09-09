@@ -10,12 +10,24 @@ exports.get_root = (request, response, next) => {
         imagen = cookies.split(';')[1].split('=')[1];
     }
 
-    response.render('inicio', {
-        username: request.session.username || '',
-        chilaquiles: Chilaquiles.fetchAll(),
-        ultimo_pedido: ultimo_pedido,
-        imagen: imagen,
-    });
+    let mensaje = request.session.mensaje || '';
+    if (request.session.mensaje) {
+        request.session.mensaje = '';
+    }
+
+    Chilaquiles.fetchAll()
+        .then(([rows, fieldData]) => {
+            response.render('inicio', {
+                username: request.session.username || '',
+                chilaquiles: rows,
+                ultimo_pedido: ultimo_pedido,
+                imagen: imagen,
+                mensaje: mensaje,
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 
 };
 
@@ -29,7 +41,13 @@ exports.post_crear = (request, response, next) => {
     const chilaquiles = new Chilaquiles(request.body.descripcion, 
         request.body.imagen);
 
-    chilaquiles.save();
+        request.session.mensaje = `${chilaquiles.descripcion} registro exitoso`;
+
+        chilaquiles.save()
+        .then(() => {
+            return response.redirect('/');
+        }).catch((error) => {
+            console.log(error)
+        });
     
-    response.redirect('/');
 };
